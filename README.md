@@ -1,16 +1,34 @@
 # Permutation Counter
 
-A PHP command-line solution for counting permutations with a target inversion count using dynamic programming.
+A PHP command-line solution for counting permutations with exactly `k` inversions using dynamic programming.
 
-## Overview
+## Learning Goal
 
-A PHP command-line solution for counting permutations with a target inversion count using dynamic programming.
+Practice transforming a combinatorics problem into a tabular dynamic programming solution with predictable input/output handling.
 
-## Features
+## Problem
 
-- Reads multiple datasets from standard input.
-- Uses a dynamic programming table to count valid permutations.
-- Keeps the implementation compact and easy to review as an algorithm exercise.
+For each dataset, given `n` and `k`, count how many permutations of `1..n` contain exactly `k` inversions. An inversion is a pair `(i, j)` where `i < j` and `a[i] > a[j]`.
+
+## Approach
+
+The program builds `dp[i][j]`, where `i` is the permutation length and `j` is the inversion count. Each state sums valid counts from the previous length.
+
+## Complexity
+
+- Time: `O(n * k * n)` with the current nested-loop recurrence.
+- Space: `O(n * k)` for the DP table.
+
+## Example
+
+```text
+Input
+1
+4 1
+
+Output
+3
+```
 
 ## Tech Stack
 
@@ -18,25 +36,16 @@ A PHP command-line solution for counting permutations with a target inversion co
 - CLI input/output
 - Dynamic programming
 
-## Project Structure
-
-- `app/count_permutations.php` - main algorithm and CLI entry point
-
-## Getting Started
-
-Run with PHP:
+## Run
 
 ```bash
 php app/count_permutations.php
 ```
 
-Input starts with the number of datasets, followed by `n k` pairs.
+## Project Structure
 
-## Portfolio Notes
+- `app/count_permutations.php` - solver and CLI entry point
 
-- Demonstrates translating a combinatorics problem into a tabular DP solution.
-- Useful as a small, focused example of PHP problem solving.
+## License
 
-## Status
-
-Portfolio-ready algorithm exercise.
+MIT License. See [LICENSE](./LICENSE).
